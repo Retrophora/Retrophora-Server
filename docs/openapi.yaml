@@ -1,0 +1,22 @@
+openapi: 3.1.0
+info:
+  title: Retrophora API (bootstrap)
+  version: 0.1.0
+  description: Only the health endpoint exists; authentication and unlock APIs remain unimplemented.
+servers:
+  - url: http://127.0.0.1:8080
+paths:
+  /v1/health:
+    get:
+      summary: Process health check
+      responses:
+        '200':
+          description: Process is responding; not a database readiness signal.
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [service, status]
+                properties:
+                  service: {type: string, const: retrophora-server}
+                  status: {type: string, const: ok}
